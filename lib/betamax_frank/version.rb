@@ -1,0 +1,3 @@
+module BetamaxFrank
+  VERSION = "0.0.1"
+end
