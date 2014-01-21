@@ -36,7 +36,7 @@ module Betamax
   def self.configuration
     {
       target_url: TARGET_URL,
-      port:       PORT
+      port:       ENV['BETAMAX_PORT'] || PORT
     }
   end
 
