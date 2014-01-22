@@ -25,10 +25,6 @@ module Betamax
     @server ||= Server.new(configuration)
   end
 
-  def self.use_default_cassette
-    server.configure(cassette: default_cassette_name)
-  end
-
   def self.cassette_name(scenario)
     scenario.name.downcase.gsub(/[\W]/, '-')
   end
@@ -43,7 +39,6 @@ module Betamax
   def self.with_cassette(cassette_name, &blk)
     server.configure(cassette: cassette_name)
     blk.call
-    use_default_cassette
   end
 
   def self.default_cassette_name
@@ -99,7 +94,6 @@ end
 
 Betamax.start_server
 sleep 3 # allow time for betamax to bind to port.
-Betamax.use_default_cassette
 
 Around do |scenario, block|
   Betamax.with_cassette(Betamax.cassette_name(scenario)) do
