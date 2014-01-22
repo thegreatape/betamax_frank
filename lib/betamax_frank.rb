@@ -64,6 +64,7 @@ module Betamax
     end
 
     def stop
+      sleep 2
       Process.kill("HUP", @pid)
     end
 
