@@ -97,10 +97,8 @@ module Betamax
 end
 
 Betamax.start_server
-
-Before do
-  Betamax.use_default_cassette
-end
+sleep 3 # allow time for betamax to bind to port.
+Betamax.use_default_cassette
 
 Around do |scenario, block|
   Betamax.with_cassette(Betamax.cassette_name(scenario)) do
